@@ -13,8 +13,19 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Prévisions Météo"
-        android:textSize="24sp"
+        android:text="Holi'Weather"
+        android:textSize="48sp"
+        android:textColor="#4A4A4A"
+        android:layout_marginBottom="32dp"
+        android:textStyle="bold" />
+
+    <!-- Petit titre -->
+    <TextView
+        android:id="@+id/littletitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quel temps fait-il là où vous allez ?"
+        android:textSize="18sp"
         android:textColor="#4A4A4A"
         android:layout_marginBottom="32dp"
         android:textStyle="bold" />

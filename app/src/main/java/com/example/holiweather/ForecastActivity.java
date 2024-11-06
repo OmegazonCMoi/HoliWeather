@@ -30,7 +30,7 @@ public class ForecastActivity extends AppCompatActivity {
         cityTitle = findViewById(R.id.resultTextView);
 
         city = getIntent().getStringExtra("city");
-        days = getIntent().getIntExtra("days", 1);
+        days = getIntent().getIntExtra("days", 1) * 4;
 
         cityTitle.setText("Prévisions pour : " + city);
 

@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
@@ -16,7 +15,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     public WeatherAdapter(List<WeatherForecast> forecasts) {
         this.forecasts = forecasts;
     }
-
 
     @NonNull
     @Override
@@ -28,10 +26,13 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         WeatherForecast forecast = forecasts.get(position);
+
         holder.tempTextView.setText(String.format("%s°C", forecast.getMain().getTemp()));
+
         holder.descriptionTextView.setText(forecast.getWeather().get(0).getDescription());
 
-        // String iconUrl = "https://openweathermap.org/img/wn/" + forecast.getWeather().get(0).getIcon() + "@2x.png";
+        holder.dateTextView.setText(forecast.getDt_txt());
+
         switch (forecast.getWeather().get(0).getIcon()) {
             case "01d":
             case "01n":
@@ -43,8 +44,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
                 break;
             case "03d":
             case "03n":
-                holder.iconImageView.setImageResource(R.drawable.ic_scattered_clouds);
-                break;
             case "04d":
             case "04n":
                 holder.iconImageView.setImageResource(R.drawable.ic_broken_clouds);
@@ -77,15 +76,18 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         return forecasts.size();
     }
 
+    // Classe ViewHolder pour définir les vues
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tempTextView;
         TextView descriptionTextView;
+        TextView dateTextView; // Nouveau TextView pour la date
         ImageView iconImageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tempTextView = itemView.findViewById(R.id.temperature);
             descriptionTextView = itemView.findViewById(R.id.weatherDescription);
+            dateTextView = itemView.findViewById(R.id.weatherDate); // Assurez-vous que cet ID correspond au TextView de la date dans item_weather_forecast.xml
             iconImageView = itemView.findViewById(R.id.weatherIcon);
         }
     }

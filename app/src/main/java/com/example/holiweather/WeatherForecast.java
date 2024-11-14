@@ -132,6 +132,7 @@ public class WeatherForecast {
         private String description;
         private String icon;
         private String dt_txt;
+        private String name;
 
         public int getId() {
             return id;
@@ -171,6 +172,14 @@ public class WeatherForecast {
 
         public void setDt_txt(String dt_txt) {
             this.dt_txt = dt_txt;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
     }
 

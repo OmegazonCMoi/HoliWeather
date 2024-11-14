@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     // Lancement de ForecastActivity avec les données
                     Intent intent = new Intent(MainActivity.this, ForecastActivity.class);
+                    intent.putExtra("cityEditText", cityEditText.getText().toString());
                     intent.putExtra("city", city);
                     intent.putExtra("days", days);
                     startActivity(intent);
